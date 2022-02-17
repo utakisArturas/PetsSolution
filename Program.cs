@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 
@@ -10,7 +9,7 @@ namespace CA02172
         static void Main(string[] args)
         {
             var persons = new List<Person>();
-            var firstPerson = new Person("Arthur",new List<Pet>())
+            var firstPerson = new Person("Arthur", new List<Pet>())
             {
                 Pets = new List<Pet>()
                 {
@@ -25,7 +24,7 @@ namespace CA02172
                 {
                     new Pet("DojaCat",5),
                     new Pet("Toxin",3),
-                    
+
                 }
             };
             var thirdPerson = new Person("David", new List<Pet>())
@@ -38,12 +37,20 @@ namespace CA02172
                 }
             };
 
-            persons.Add(firstPerson);    
+            persons.Add(firstPerson);
             persons.Add(secondPerson);
             persons.Add(thirdPerson);
             var petsList = persons.SelectMany(person => person.Pets).ToList();
             var petsListWithA = petsList.Where(pet => pet.Name.StartsWith('A')).ToList();
             var petsWithAge = petsListWithA.Where(pet => pet.Age > 5).ToList();
+            UpperCaseLetter("This string Contains Some upper Letters and not.").ToList();
+
+        }
+
+        public static IEnumerable<string> UpperCaseLetter(string str)
+        {
+           
+            return str.Split(' ').Where(letter => letter == letter.ToUpper());
         }
 
     }
